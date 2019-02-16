@@ -34,7 +34,7 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
     return mailTransport
       .sendMail(mailOptions)
       .then(() => {
-        console.log(`New Email sent: ${emailMessage}`);
+        console.log(`New Email sent: ${req.query.message}`);
         return res.end();
       })
       .catch(error => {
@@ -63,7 +63,6 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
 
 // fetch(url, {
 //     method: 'POST', // or 'PUT'
-//     mode:'no-cors',
 //     body: s, // data can be `string` or {object}!
 //     headers: {
 //         'Content-Type': 'application/json'
